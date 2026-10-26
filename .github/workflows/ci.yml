@@ -12,5 +12,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Run unit tests
-        run: python -m unittest -v CalcTest
+      - name: Install verification tools
+        run: pip install coverage ruff
+      - name: Static analysis (ruff)
+        run: ruff check .
+      - name: Run unit tests with coverage
+        run: coverage run --branch -m unittest -v CalcTest
+      - name: Coverage report (must be 100%)
+        run: coverage report -m --fail-under=100
