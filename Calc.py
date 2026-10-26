@@ -16,7 +16,8 @@ class Calculator:
     def modulo(self, a, b):
         if b == 0:
             raise ZeroDivisionError("Cannot divide by zero")
-        return a % b
+        remainder = abs(a) % abs(b)
+        return -remainder if a < 0 else remainder
 
     def power(self, a, b):
         if a == 0 and b < 0:
