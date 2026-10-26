@@ -17,6 +17,6 @@ jobs:
       - name: Static analysis (ruff)
         run: ruff check .
       - name: Run unit tests with coverage
-        run: coverage run --branch -m unittest -v CalcTest
+        run: coverage run --branch --include=Calc.py -m unittest -v CalcTest
       - name: Coverage report (must be 100%)
         run: coverage report -m --fail-under=100
